@@ -11,3 +11,16 @@ E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csproj.CoreComp
 E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csproj.CopyComplete
 E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.exe
 E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.pdb
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\TestMoreLinq.exe.config
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\TestMoreLinq.exe
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\TestMoreLinq.pdb
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\MoreLinq.dll
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\System.ValueTuple.dll
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\MoreLinq.pdb
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\MoreLinq.xml
+D:\Files\Git\TestMoreLinq\TestMoreLinq\bin\Debug\System.ValueTuple.xml
+D:\Files\Git\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csprojAssemblyReference.cache
+D:\Files\Git\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csproj.CoreCompileInputs.cache
+D:\Files\Git\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csproj.CopyComplete
+D:\Files\Git\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.exe
+D:\Files\Git\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.pdb

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using MoreLinq;
 using System.Linq;
+using System.Text;
 
 namespace TestMoreLinq
 {
@@ -14,7 +15,7 @@ namespace TestMoreLinq
         {
             try
             {
-                var data = new byte[] { 1, 2, 3, 4, 5, 6, 7 };
+                var data = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
                 //Acquire
                 //Ensures that a source sequence of disposable objects are all acquired successfully.
                 //If the acquisition of any one fails then those successfully acquired till that point are disposed.
@@ -223,87 +224,128 @@ namespace TestMoreLinq
                 //返回一个键值对序列，值为原序列中的元素值，键根据keySelector的返回值在序列中的排序得到
                 //例子中以第一个元素的第一个字符作为筛选，"ana"中第一次出现‘a’，所以键为0，"adriano"中第二次出现‘a’，所以键为1, "angelo"中第三次出现‘a’，所以键为2
                 var source = new[] { "ana", "beatriz", "carla", "bob", "davi", "adriano", "angelo", "carlos" };
-                var result = source.IndexBy(x => x.First());
+                var result = source.IndexBy(x => x.LastOrDefault());
                 Print("IndexBy", result);
                 //Insert
                 //Inserts the elements of a sequence into another sequence at a specified index.
-
+                //在指定索引处将序列的元素插入到另一个序列中
+                Print("Insert", data.Insert(new byte[] { 123 }, 2));
                 //Interleave
                 //Interleaves the elements of two or more sequences into a single sequence, skipping sequences as they are consumed.
-
-                //Lag
+                //将两个或多个序列的元素交错到单个序列中，并在序列被消耗时跳过它们
+                Print("Interleave", More.Interleave(data, new byte[] { 12, 12, 12 }));
+                //Lag滞后
                 //Produces a projection of a sequence by evaluating pairs of elements separated by a negative offset.
+                //返回一个序列，将原序列中的每个元素减去一个值，小于等于0的元素用默认元素或者0填充
+                //resultSelector中的第一个参数为原系列中的值，第二个参数为计算（滞后）后的值
+                const int lagBy = 2;
+                const byte lagDefault = 0;
+                Print("Lag", data.Lag(lagBy, lagDefault, (val, lagVal) => lagVal));
+                Print("Lag", data.Lag(lagBy, lagDefault, (val, lagVal) => lagVal - val));
+                Print("Lag", data.Lag(lagBy, (val, lagVal) => lagVal + val));
 
                 //This method has 2 overloads.
 
                 //Lead
                 //Produces a projection of a sequence by evaluating pairs of elements separated by a positive offset.
-
+                //返回一个序列，将原序列中的每个元素加上一个值，大于等于原序列中的最大值的元素用默认元素或者0填充
+                //resultSelector中的第一个参数为原系列中的值，第二个参数为计算（超前）后的值
                 //This method has 2 overloads.
-
+                const int leadBy = 2;
+                const byte leadDefault = 100;
+                Print("", data);
+                Print("Lead", data.Lead(leadBy, leadDefault, (val, lagVal) => lagVal));
+                Print("Lead", data.Lead(leadBy, leadDefault, (val, lagVal) => lagVal - val));
+                Print("Lead", data.Lead(leadBy, (val, lagVal) => lagVal));
                 //LeftJoin
                 //Performs a left outer join between two sequences.
 
                 //This method has 4 overloads.
-
                 //MaxBy
                 //Returns the maxima(maximal elements) of the given sequence, based on the given projection.
-
+                //返回一个序列
                 //This method has 2 overloads.
-
+                Console.WriteLine($"MaxBy||{data.IndexBy(d => d).MaxBy(d => d.Value).FirstOrDefault()}");
                 //MinBy
                 //Returns the minima(minimal elements) of the given sequence, based on the given projection.
-
+                //返回一个序列
                 //This method has 2 overloads.
-
+                Console.WriteLine($"MinBy||{data.IndexBy(d => d).MinBy(d => d.Value).FirstOrDefault()}");
                 //Move
                 //Returns a sequence with a range of elements in the source sequence moved to a new offset.
+
+                Print("", data.Move(3, 3, 1));
 
                 //OrderBy
                 //Sorts the elements of a sequence in a particular direction(ascending, descending) according to a key.
 
                 //This method has 2 overloads.
-
+                Print("OrderBy", data.IndexBy(d => d).OrderBy(d => d.Value));
+                Print("OrderByDescending", data.IndexBy(d => d).OrderByDescending(d => d.Value));
                 //OrderedMerge
                 //Merges two ordered sequences into one.Where the elements equal in both sequences,
                 //the element from the first sequence is returned in the resulting sequence.
-
                 //This method has 7 overloads.
-
+                Print("OrderedMerge", data.OrderedMerge(data.Backsert(new byte[] { 123 }, 0)));
+                Print("OrderedMerge", data.OrderedMerge(new byte[] { 12, 12, 12, 12 }));
                 //Pad
                 //Pads a sequence with default values if it is narrower(shorter in length) than a given width.
-
+                //如果序列比给定的宽度更窄(长度更短)，则用默认值填充序列。
+                //默认值为0或指定值
+                //paddingSelector中的参数为元素的索引
                 //This method has 3 overloads.
-
+                Print("Pad", data.Pad(20));
+                Print("Pad", data.Pad(20, (byte)123));
+                Print("Pad", data.Pad(20, i => i % 2 == 0 ? (byte)23 : (byte)34));
                 //PadStart
                 //Pads a sequence with default values in the beginning if it is narrower(shorter in length) than a given width.
-
+                //从原序列的开始开始填充元素
                 //This method has 3 overloads.
-
+                Print("PadStart", data.PadStart(20));
+                Print("PadStart", data.PadStart(20, (byte)123));
+                Print("PadStart", data.PadStart(20, i => i % 2 == 0 ? (byte)23 : (byte)34));
                 //Pairwise
                 //Returns a sequence resulting from applying a function to each element in the source sequence and its predecessor,
                 //with the exception of the first element which is only returned as the predecessor of the second element
-
+                //返回的序列长度比原序列长度小1
+                //resultSelector中的第一个参数为原序列在当前索引下的元素值，第二个参数为原序列在当前索引+1下的元素的值
+                Print("Pairwise", data);
+                Print("Pairwise", data.Pairwise((one, two) =>
+                {
+                    Console.WriteLine(one);
+                    Console.WriteLine(two);
+                    return one * two;
+                }));
                 //PartialSort
                 //Combines OrderBy(where element is key) and Take in a single operation.
-
+                //部分排序
+                //先排序后取值
                 //This method has 4 overloads.
-
+                Print("PartialSort", data.PartialSort(4));
+                Print("PartialSort", data.PartialSort(4, OrderByDirection.Ascending));
+                Print("PartialSort", data.PartialSort(4, OrderByDirection.Descending));
                 //PartialSortBy
                 //Combines OrderBy and Take in a single operation.
-
+                //根据条件部分排序
+                //先排序后取值
                 //This method has 4 overloads.
-
+                Print("PartialSortBy", data.IndexBy(d => d).PartialSortBy(5, d => d.Value));
+                Print("PartialSortBy", data.IndexBy(d => d).PartialSortBy(5, d => d.Value, OrderByDirection.Descending));
                 //Partition
                 //Partitions a sequence by a predicate, or a grouping by Boolean keys or up to 3 sets of keys.
-
+                //分组
                 //This method has 10 overloads.
-
+                var (part1, part2) = data.Partition(x => x % 2 == 0, (o, t) => Tuple.Create(new byte[] { 34, 45 }, new byte[] { 12 }));
+                Print("Partition", part1);
+                Print("Partition", part2);
                 //Permutations
                 //Generates a sequence of lists that represent the permutations of the original sequence
-
+                //Print("Permutations", data.Permutations());
                 //Pipe
                 //Executes the given action on each element in the source sequence and yields it
+
+                // The action will occur "in" the pipe, so by the time Where gets it, the
+                // sequence will be empty.
 
                 //Prepend
                 //Prepends a single value to a sequence
