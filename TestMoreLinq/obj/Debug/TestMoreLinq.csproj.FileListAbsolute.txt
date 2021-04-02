@@ -1,0 +1,13 @@
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\TestMoreLinq.exe.config
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\TestMoreLinq.exe
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\TestMoreLinq.pdb
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\MoreLinq.dll
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\System.ValueTuple.dll
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\MoreLinq.pdb
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\MoreLinq.xml
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\bin\Debug\System.ValueTuple.xml
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csprojAssemblyReference.cache
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csproj.CoreCompileInputs.cache
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.csproj.CopyComplete
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.exe
+E:\TestMoreLinq\TestMoreLinq\TestMoreLinq\obj\Debug\TestMoreLinq.pdb
